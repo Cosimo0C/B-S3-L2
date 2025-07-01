@@ -13,25 +13,53 @@ public class Evento{
     private long id;
 
     @Column(name = "Titolo")
-    String titolo;
+     private String titolo;
 
     @Column(name = "Data evento")
-    LocalDate dataEvento;
+    private LocalDate dataEvento;
 
-    @Column(name = "Descrizione")
-    String descrizione;
+    @Column(name = "Descrizione", nullable = false)
+    private String descrizione;
 
     @Column(name = "Tipo di evento")
     @Enumerated(EnumType.STRING)
-    Tipo tipoEvento;
+    private Tipo tipoEvento;
 
     @Column(name = "Max partecipanti")
-    int numeroMassimoPartecipanti;
+    private int numeroMassimoPartecipanti;
     public Evento(String titolo, LocalDate dataEvento, String descrizione, Tipo tipoEvento, int numeroMassimoPartecipanti){
         this.titolo=titolo;
         this.dataEvento=dataEvento;
         this.descrizione=descrizione;
         this.tipoEvento=tipoEvento;
         this.numeroMassimoPartecipanti=numeroMassimoPartecipanti;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getTitolo() {
+        return titolo;
+    }
+
+    public LocalDate getDataEvento() {
+        return dataEvento;
+    }
+
+    public String getDescrizione() {
+        if (this.descrizione==null){
+            return "Manca la descizione";
+        }else {
+            return descrizione;
+        }
+    }
+
+    public Tipo getTipoEvento() {
+        return tipoEvento;
+    }
+
+    public int getNumeroMassimoPartecipanti() {
+        return numeroMassimoPartecipanti;
     }
 }
