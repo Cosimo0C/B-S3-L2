@@ -19,5 +19,11 @@ public class EventoDAO {
         return entityManager.find(Evento.class, eventoId);
     }
     public void deleteEvento(long eventoId){
+        Evento id= getIdEvento(eventoId);
+        EntityTransaction tran= entityManager.getTransaction();
+        tran.begin();
+        entityManager.remove(id);
+        tran.commit();
+        System.out.println("L'evento è stato eliminato");
     }
 }
